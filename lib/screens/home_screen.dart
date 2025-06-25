@@ -1,4 +1,3 @@
-// lib/screens/home_screen.dart
 import 'package:agenda_diaria/theme/app_theme.dart';
 import 'package:agenda_diaria/widgets/category_selector.dart';
 import 'package:agenda_diaria/widgets/child_selector.dart';
@@ -28,6 +27,73 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   String? selectedCategory;
+
+  List<Widget> buildEventSections() {
+    final List<Child> displayedChildren =
+        selectedChild == null
+            ? mockChildren
+            : mockChildren.where((c) => c.name == selectedChild).toList();
+
+    return displayedChildren.map((child) {
+      final childEvents =
+          child.events
+              .where(
+                (event) =>
+                    selectedCategory == null ||
+                    event.category == selectedCategory,
+              )
+              .toList();
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 10),
+          Text(
+            child.name,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.secondary,
+                    spreadRadius: 4,
+                    blurRadius: 0,
+                  )
+                ]
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  child.imageUrl,
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          if (childEvents.isNotEmpty)
+            ...childEvents.map((event) => EventCard(event: event))
+          else
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                'No hay eventos para esta categoría.',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          SizedBox(height: 10),
+          Divider(),
+        ],
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +132,16 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomAppBar(),
 
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         children: [
-          Center(
+          const Center(
             child: Text(
               'Agenda diaria',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
-          Divider(),
-          SizedBox(height: 10),
+          const Divider(),
+          const SizedBox(height: 10),
 
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -89,69 +155,9 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-          if (selectedChildObject != null)
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary,
-                      spreadRadius: 4,
-                      blurRadius: 0,
-                    ),
-                  ],
-                ),
-                child: ClipRRect(
-                  
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                    selectedChildObject.imageUrl,
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                  ),
-                ),
-              ),
-            ),
-          // ⏺️ Tarjetas de eventos
-          if (selectedChildObject != null)
-            ...selectedChildObject.events
-                .where(
-                  (event) =>
-                      selectedCategory == null ||
-                      event.category == selectedCategory,
-                )
-                .map((event) => EventCard(event: event))
-                .toList(),
 
-          if (selectedChildObject != null &&
-              selectedChildObject.events
-                  .where(
-                    (event) =>
-                        selectedCategory == null ||
-                        event.category == selectedCategory,
-                  )
-                  .isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'No hay eventos para esta categoría.',
-                textAlign: TextAlign.center,
-              ),
-            ),
-
-          if (selectedChildObject == null)
-            const Padding(
-              padding: EdgeInsets.all(28),
-              child: Text(
-                'Selecciona uno de tus hijos para ver su agenda.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
+          const SizedBox(height: 20),
+          ...buildEventSections(),
         ],
       ),
     );

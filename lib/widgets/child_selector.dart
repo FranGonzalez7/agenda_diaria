@@ -1,8 +1,6 @@
-// lib/widgets/child_selector.dart
 import 'package:flutter/material.dart';
 
 class ChildSelector extends StatelessWidget {
-
   final String? selectedChild;
   final List<String> children;
   final void Function(String?) onChanged;
@@ -18,18 +16,24 @@ class ChildSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text("Hijo/a:", style: TextStyle(fontSize: 16)),
+        const Text("Hijos/as:", style: TextStyle(fontSize: 16)),
         const SizedBox(width: 16),
         DropdownButtonHideUnderline(
-          child: DropdownButton<String>(
+          child: DropdownButton<String?>(
             value: selectedChild,
             hint: const Text('Seleccionar'),
-            items: children.map((child) {
-              return DropdownMenuItem(
-                value: child,
-                child: Text(child),
-              );
-            }).toList(),
+            items: [
+              const DropdownMenuItem<String?>(
+                value: null,
+                child: Text('Todos'),
+              ),
+              ...children.map((child) {
+                return DropdownMenuItem<String>(
+                  value: child,
+                  child: Text(child),
+                );
+              }).toList(),
+            ],
             onChanged: onChanged,
           ),
         ),
