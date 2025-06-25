@@ -47,12 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           Text(
             child.name,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           Center(
             child: Container(
               decoration: BoxDecoration(
@@ -62,8 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: AppColors.secondary,
                     spreadRadius: 4,
                     blurRadius: 0,
-                  )
-                ]
+                  ),
+                ],
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
@@ -134,14 +134,35 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 10),
         children: [
-          const Center(
-            child: Text(
-              'Agenda diaria',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withOpacity(0.1), // fondo suave
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppColors.primary, width: 4),
+                ),
+                child: Center(
+                  child: Text(
+                    'Agenda diaria',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
-          const Divider(),
-          const SizedBox(height: 10),
+
+          SizedBox(height: 5),
 
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -155,8 +176,9 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
+          Divider(),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           ...buildEventSections(),
         ],
       ),
