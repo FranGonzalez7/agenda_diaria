@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const primary = Colors.deepPurple;
-  static const secondary = Colors.orange;
-  static const background = Colors.white;
+  static const primary = Color(0xFF6621BA);
+  static const secondary = Color(0xFFF98A17);
+  static const background = Color(0xFFF5F5F5);
   static const card = Color(0xFFF7F7F7);
   static const text = Colors.black87;
 }
@@ -33,6 +33,7 @@ class AppTheme {
       textTheme: const TextTheme(
         bodyMedium: TextStyle(fontSize: 16, color: AppColors.text),
       ),
+      fontFamily: 'Inter',
       
       cardColor: AppColors.card,
 

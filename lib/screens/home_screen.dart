@@ -26,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
     'Observaciones',
   ];
 
+  Set<String> selectedCategories = {};
+
   String? selectedCategory;
 
   List<Widget> buildEventSections() {
@@ -39,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child.events
               .where(
                 (event) =>
-                    selectedCategory == null ||
-                    event.category == selectedCategory,
+                    selectedCategories.isEmpty ||
+                    selectedCategories.contains(event.category),
               )
               .toList();
 
@@ -129,7 +131,22 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      bottomNavigationBar: BottomAppBar(),
+      bottomNavigationBar: BottomAppBar(
+        color: AppColors.primary,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Center(
+            child: Text(
+              'Kids&Clouds • 2025',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+      ),
 
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -168,10 +185,14 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: CategorySelector(
               categories: categories,
-              selectedCategory: selectedCategory,
-              onCategorySelected: (value) {
+              selectedCategories: selectedCategories,
+              onCategorySelected: (category, isSelected) {
                 setState(() {
-                  selectedCategory = value;
+                  if (isSelected) {
+                    selectedCategories.add(category);
+                  } else {
+                    selectedCategories.remove(category);
+                  }
                 });
               },
             ),
