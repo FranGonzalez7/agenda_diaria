@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String? selectedChild;
 
-  final List<String> children = ['Sansa', 'Arya', 'Bran', 'Rickon'];
+  final List<String> children = ['Tommy', 'Chuckie', 'Angelica', 'Phil', 'Lil'];
 
   final List<String> categories = [
     'Alimentación',
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(
+                child: Image.asset(
                   child.imageUrl,
                   width: 200,
                   height: 200,
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Ned Stark',
+          'Stu Pickles',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -149,15 +149,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10,),
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
+                  horizontal: 30,
                   vertical: 12,
                 ),
                 decoration: BoxDecoration(
