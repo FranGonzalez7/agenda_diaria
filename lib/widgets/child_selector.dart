@@ -1,3 +1,4 @@
+import 'package:agenda_diaria/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ChildSelector extends StatelessWidget {
@@ -21,16 +22,16 @@ class ChildSelector extends StatelessWidget {
         DropdownButtonHideUnderline(
           child: DropdownButton<String?>(
             value: selectedChild,
-            hint: const Text('Seleccionar'),
+            hint: const Text('Seleccionar', style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold)),
             items: [
               const DropdownMenuItem<String?>(
                 value: null,
-                child: Text('Todos'),
+                child: Text('Todos', style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold)),
               ),
               ...children.map((child) {
                 return DropdownMenuItem<String>(
                   value: child,
-                  child: Text(child),
+                  child: Text(child, style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold)),
                 );
               }).toList(),
             ],

@@ -1,6 +1,7 @@
 // lib/widgets/event_card.dart
 
 import 'package:agenda_diaria/theme/app_theme.dart';
+import 'package:agenda_diaria/utils/category_icons.dart';
 import 'package:flutter/material.dart';
 import '../models/event_model.dart';
 
@@ -31,13 +32,24 @@ class EventCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
-                event.category,
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                  fontSize: 14,
-                  color: Colors.grey,
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    getCategoryIconPath(event.category),
+                    width: 16,
+                    height: 16,
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    event.category,
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 8),
               Text(event.description),
