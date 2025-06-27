@@ -111,9 +111,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Stu Pickles',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        toolbarHeight: 72,
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(2), // Grosor del borde
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppColors.secondary, // Color del borde
+                  width: 3,
+                ),
+              ),
+              child: const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/stu3.png'),
+                radius: 22,
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              'Stu Pickles',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
         actions: [
           Padding(
@@ -149,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 10,),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         children: [
           Center(
             child: Padding(

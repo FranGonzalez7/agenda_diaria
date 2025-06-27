@@ -26,7 +26,9 @@ class ChildSelector extends StatelessWidget {
             items: [
               const DropdownMenuItem<String?>(
                 value: null,
-                child: Text('Todos', style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold)),
+                child: Text('Todos', 
+                style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold),
+                ),
               ),
               ...children.map((child) {
                 return DropdownMenuItem<String>(
