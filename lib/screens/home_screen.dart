@@ -1,10 +1,9 @@
 import 'package:agenda_diaria/theme/app_theme.dart';
-import 'package:agenda_diaria/widgets/category_selector.dart';
-import 'package:agenda_diaria/widgets/child_selector.dart';
-import 'package:agenda_diaria/widgets/event_card.dart';
 import 'package:flutter/material.dart';
-import '../data/mock_data.dart';
+import '../data/mock_children.dart';
 import '../models/child_model.dart';
+import 'package:agenda_diaria/app_constants.dart';
+import '../widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,119 +14,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String? selectedChild;
-
-  final List<String> children = ['Tommy', 'Chuckie', 'Angelica', 'Phil', 'Lil'];
-
-  final List<String> categories = [
-    'Alimentación',
-    'Siestas',
-    'Actividades',
-    'Deposiciones',
-    'Observaciones',
-  ];
-
   Set<String> selectedCategories = {};
-
   String? selectedCategory;
 
-  List<Widget> buildEventSections() {
+  @override
+  Widget build(BuildContext context) {
     final List<Child> displayedChildren =
         selectedChild == null
             ? mockChildren
             : mockChildren.where((c) => c.name == selectedChild).toList();
-
-    return displayedChildren.map((child) {
-      final childEvents =
-          child.events
-              .where(
-                (event) =>
-                    selectedCategories.isEmpty ||
-                    selectedCategories.contains(event.category),
-              )
-              .toList();
-
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 10),
-          Text(
-            child.name,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.secondary,
-                    spreadRadius: 4,
-                    blurRadius: 0,
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  child.imageUrl,
-                  width: 200,
-                  height: 200,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          if (childEvents.isNotEmpty)
-            ...childEvents.map((event) => EventCard(event: event))
-          else
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'No hay eventos para esta categoría.',
-                textAlign: TextAlign.center,
-              ),
-            ),
-          SizedBox(height: 10),
-          Divider(),
-        ],
-      );
-    }).toList();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Child? selectedChildObject;
-
-    try {
-      selectedChildObject = mockChildren.firstWhere(
-        (child) => child.name == selectedChild,
-      );
-    } catch (e) {
-      selectedChildObject = null;
-    }
 
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 72,
         title: Row(
           children: [
-            Container(
-              padding: const EdgeInsets.all(2), // Grosor del borde
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: AppColors.secondary, // Color del borde
-                  width: 3,
-                ),
-              ),
-              child: const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/stu3.png'),
-                radius: 22,
-              ),
-            ),
+            ParentAvatar(),
             const SizedBox(width: 12),
             const Text(
               'Stu Pickles',
@@ -140,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.only(right: 10.0),
             child: ChildSelector(
               selectedChild: selectedChild,
-              children: children,
+              children: kChildrenNames,
               onChanged: (value) {
                 setState(() {
                   selectedChild = value;
@@ -171,41 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 10),
         children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.1), // fondo suave
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.primary, width: 4),
-                ),
-                child: Center(
-                  child: Text(
-                    'Agenda diaria',
-                    style: TextStyle(
-                      fontFamily: 'Bitter',
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          HeaderTitle(),
 
           SizedBox(height: 5),
 
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: CategorySelector(
-              categories: categories,
+              categories: kEventCategories,
               selectedCategories: selectedCategories,
               onCategorySelected: (category, isSelected) {
                 setState(() {
@@ -221,7 +96,13 @@ class _HomeScreenState extends State<HomeScreen> {
           Divider(),
 
           const SizedBox(height: 5),
-          ...buildEventSections(),
+
+          ...displayedChildren.map(
+            (child) => EventSection(
+              child: child,
+              selectedCategories: selectedCategories,
+            ),
+          ),
         ],
       ),
     );

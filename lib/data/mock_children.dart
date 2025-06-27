@@ -29,7 +29,7 @@ final List<Child> mockChildren = [
       Event(
         category: 'Siestas',
         time: '15:00',
-        description: 'Durmió con su destornillador de juguete en la mano.',
+        description: 'Durmió abrazado a su peluche de Reptar.',
       ),
     ],
   ),
@@ -40,7 +40,7 @@ final List<Child> mockChildren = [
       Event(
         category: 'Alimentación',
         time: '09:00',
-        description: 'Comió a regañadientes un puré verde.',
+        description: 'Comió a regañadientes un puré de verduras.',
       ),
       Event(
         category: 'Actividades',
@@ -76,7 +76,7 @@ final List<Child> mockChildren = [
       Event(
         category: 'Observaciones',
         time: '11:30',
-        description: 'Tuvo un berrinche por no encontrar su muñeca.',
+        description: 'Tuvo un berrinche por no encontrar su muñeca Cinthia.',
       ),
       Event(
         category: 'Deposiciones',
@@ -107,7 +107,7 @@ final List<Child> mockChildren = [
       Event(
         category: 'Deposiciones',
         time: '11:45',
-        description: 'Se rió cuando hizo un pedete.',
+        description: 'Se rió cuando se tiró un pedete.',
       ),
       Event(
         category: 'Observaciones',
@@ -123,12 +123,12 @@ final List<Child> mockChildren = [
       Event(
         category: 'Actividades',
         time: '09:00',
-        description: 'Jugó con gusanos junto a Phil sin asco.',
+        description: 'Jugó con gusanos junto a Phil sin que le diera asco.',
       ),
       Event(
         category: 'Alimentación',
         time: '10:45',
-        description: 'Pidió repetir puré de zanahoria.',
+        description: 'Pidió repetir el puré de zanahoria.',
       ),
       Event(
         category: 'Deposiciones',
