@@ -16,11 +16,10 @@ class ChildSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Hijos/as:", style: TextStyle(fontSize: 16)),
+        children: [          
 
           DropdownButtonHideUnderline(
             child: DropdownButton<String?>(
@@ -31,7 +30,7 @@ class ChildSelector extends StatelessWidget {
                 const DropdownMenuItem<String?>(
                   value: null,
                   child: Text(
-                    'Todos',
+                    'Hijos/as',
                     style: TextStyle(
                       color: AppColors.secondary,
                       fontWeight: FontWeight.bold,

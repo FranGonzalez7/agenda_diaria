@@ -2,7 +2,7 @@ import 'package:agenda_diaria/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../data/mock_children.dart';
 import '../models/child_model.dart';
-import 'package:agenda_diaria/app_constants.dart';
+import 'package:agenda_diaria/utils/app_constants.dart';
 import '../widgets.dart';
 
 class HomeScreen extends StatefulWidget {
