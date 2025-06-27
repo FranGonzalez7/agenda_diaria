@@ -15,32 +15,47 @@ class ChildSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Text("Hijos/as:", style: TextStyle(fontSize: 16)),
-        const SizedBox(width: 16),
-        DropdownButtonHideUnderline(
-          child: DropdownButton<String?>(
-            value: selectedChild,
-            hint: const Text('Seleccionar', style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold)),
-            items: [
-              const DropdownMenuItem<String?>(
-                value: null,
-                child: Text('Todos', 
-                style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Hijos/as:", style: TextStyle(fontSize: 16)),
+
+          DropdownButtonHideUnderline(
+            child: DropdownButton<String?>(
+              iconEnabledColor: AppColors.secondary,
+              value: selectedChild,
+
+              items: [
+                const DropdownMenuItem<String?>(
+                  value: null,
+                  child: Text(
+                    'Todos',
+                    style: TextStyle(
+                      color: AppColors.secondary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-              ...children.map((child) {
-                return DropdownMenuItem<String>(
-                  value: child,
-                  child: Text(child, style: TextStyle(color: AppColors.secondary, fontWeight: FontWeight.bold)),
-                );
-              }).toList(),
-            ],
-            onChanged: onChanged,
+                ...children.map((child) {
+                  return DropdownMenuItem<String>(
+                    value: child,
+                    child: Text(
+                      child,
+                      style: TextStyle(
+                        color: AppColors.secondary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ],
+              onChanged: onChanged,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

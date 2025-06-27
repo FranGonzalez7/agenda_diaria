@@ -37,3 +37,8 @@ flutter:
         - asset: assets/fonts/Inter_24pt-Regular.ttf
         - asset: assets/fonts/Inter_24pt-Bold.ttf      
           weight: 700
+    - family: Bitter
+      fonts:
+        - asset: assets/fonts/Bitter-Regular.ttf
+        - asset: assets/fonts/Bitter-Bold.ttf      
+          weight: 700

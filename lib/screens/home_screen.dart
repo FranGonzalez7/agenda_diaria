@@ -189,7 +189,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     'Agenda diaria',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontFamily: 'Bitter',
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: AppColors.primary,
                     ),

@@ -6,6 +6,7 @@ class AppColors {
   static const primary = Color(0xFF6621BA);
   static const secondary = Color(0xFFF98A17);
   static const background = Color(0xFFF5F5F5);
+  static const lightBackgroung = Color.fromARGB(255, 230, 219, 244);
   static const card = Color(0xFFF7F7F7);
   static const text = Colors.black87;
 }
@@ -14,7 +15,7 @@ class AppTheme {
   static ThemeData get blueTheme {
     return ThemeData(
       scaffoldBackgroundColor: AppColors.background,
-      
+
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
@@ -34,7 +35,7 @@ class AppTheme {
         bodyMedium: TextStyle(fontSize: 16, color: AppColors.text),
       ),
       fontFamily: 'Inter',
-      
+
       cardColor: AppColors.card,
 
       chipTheme: ChipThemeData(
@@ -46,7 +47,6 @@ class AppTheme {
         brightness: Brightness.light,
         padding: const EdgeInsets.symmetric(horizontal: 8),
       ),
-      
     );
   }
 }

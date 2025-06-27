@@ -13,10 +13,13 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: AppColors.primary,
+      color: AppColors.lightBackgroung,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: SizedBox(
+        
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(12),
@@ -46,7 +49,7 @@ class EventCard extends StatelessWidget {
                     style: const TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 14,
-                      color: Colors.grey,
+                      color: Colors.blueGrey,
                     ),
                   ),
                 ],
