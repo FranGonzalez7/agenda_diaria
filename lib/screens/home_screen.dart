@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ParentAvatar(),
             const SizedBox(width: 12),
             const Text(
-              'Stu Pickles',
+              'Luis López',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
@@ -70,15 +70,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 16),
           HeaderTitle(),
-
-          SizedBox(height: 5),
-
+          const SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: CategorySelector(
               categories: kEventCategories,
               selectedCategories: selectedCategories,
@@ -93,14 +92,19 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-          Divider(),
-
-          const SizedBox(height: 5),
-
-          ...displayedChildren.map(
-            (child) => EventSection(
-              child: child,
-              selectedCategories: selectedCategories,
+          const Divider(),
+          const SizedBox(height: 8),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.only(bottom: 12),
+              children: [
+                ...displayedChildren.map(
+                  (child) => EventSection(
+                    child: child,
+                    selectedCategories: selectedCategories,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

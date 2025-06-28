@@ -12,7 +12,7 @@ class AppColors {
 }
 
 class AppTheme {
-  static ThemeData get blueTheme {
+  static ThemeData get purpleTheme {
     return ThemeData(
       scaffoldBackgroundColor: AppColors.background,
 
@@ -36,16 +36,11 @@ class AppTheme {
       ),
       fontFamily: 'Inter',
 
-      cardColor: AppColors.card,
-
       chipTheme: ChipThemeData(
-        selectedColor: AppColors.primary,
-        secondarySelectedColor: AppColors.primary,
+        selectedColor: AppColors.primary,        
         checkmarkColor: AppColors.background,
-        labelStyle: const TextStyle(color: AppColors.text),
-        secondaryLabelStyle: const TextStyle(color: Colors.white),
-        brightness: Brightness.light,
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        labelStyle: const TextStyle(color: AppColors.text),     
+        padding: const EdgeInsets.symmetric(horizontal:10),
       ),
     );
   }

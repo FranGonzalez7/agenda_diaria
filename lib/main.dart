@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Agenda Diaria',
-      theme: AppTheme.blueTheme,
+      theme: AppTheme.purpleTheme,
       home: const HomeScreen(),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:agenda_diaria/theme/app_theme.dart';
 import 'package:agenda_diaria/utils/category_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class CategorySelector extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: FilterChip(
                   side: BorderSide(
-                    color: isSelected ? Colors.transparent : Colors.grey,
+                    color: isSelected ? Colors.transparent : AppColors.primary,
                   ),
                   label: Row(
                     mainAxisSize: MainAxisSize.min,
