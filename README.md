@@ -43,8 +43,19 @@ Actualmente los datos son simulados, pero la estructura está preparada para una
 ## 👤 Autor  
 Este proyecto ha sido desarrollado por **Fran González** como parte de una prueba técnica para un proceso de selección.
 
+## 🎞️ Vista previa en acción
+
+![Demo](assets/screenshots/demo.gif)
+
 ## 📷 Capturas de pantalla
 
 | Pantalla principal | Selector de niño | Filtro por categorías |
 |--------------------|------------------|------------------------|
 | ![](assets/screenshots/main.png) | ![](assets/screenshots/selector.png) | ![](assets/screenshots/filters.png) |
+
+## 💻 Vista en escritorio (Flutter Web)
+
+A continuación se muestra cómo se adapta la aplicación a un entorno de escritorio:
+
+![Vista escritorio](assets/screenshots/web.png)
+
