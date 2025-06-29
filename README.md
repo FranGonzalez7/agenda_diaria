@@ -42,3 +42,9 @@ Actualmente los datos son simulados, pero la estructura está preparada para una
 
 ## 👤 Autor  
 Este proyecto ha sido desarrollado por **Fran González** como parte de una prueba técnica para un proceso de selección.
+
+## 📷 Capturas de pantalla
+
+| Pantalla principal | Selector de niño | Filtro por categorías |
+|--------------------|------------------|------------------------|
+| ![](assets/screenshots/main.png) | ![](assets/screenshots/selector.png) | ![](assets/screenshots/filters.png) |
