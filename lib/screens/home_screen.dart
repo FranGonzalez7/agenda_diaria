@@ -15,10 +15,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String? selectedChild;
   Set<String> selectedCategories = {};
-  String? selectedCategory;
-
+  
   @override
   Widget build(BuildContext context) {
+    
     final List<Child> displayedChildren =
         selectedChild == null
             ? mockChildren
