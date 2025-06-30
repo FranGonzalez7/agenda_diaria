@@ -18,15 +18,14 @@ Agenda Diaria es una aplicación móvil desarrollada en Flutter como parte de un
 ---
 
 ## 🔧 Enfoque del desarrollo  
-Mi enfoque ha sido crear una aplicación funcional y visualmente agradable, centrada en la simplicidad de uso y la claridad de la información.  
-Además, he procurado que la paleta de colores y las tipografías se inspiren en el estilo visual de la web de la empresa, con el objetivo de mantener coherencia estética y alineación con su identidad corporativa.  
+Mi enfoque ha sido crear una aplicación funcional y visualmente agradable, centrada en la simplicidad de uso y la claridad de la información. Además, he procurado que la paleta de colores y las tipografías se inspiren en el estilo visual de la web de la empresa, con el objetivo de mantener una coherencia estética con su identidad corporativa.  
 
 He optado por una arquitectura modular, separando widgets y manteniendo un código limpio y fácil de escalar.  
 La interfaz está pensada para ser amigable y accesible, utilizando elementos como chips, avatares y listas agrupadas.  
 
-Aunque se sugería obtener las imágenes desde una API externa, decidí utilizar `Image.asset` en lugar de `Image.network`, ya que las imágenes proporcionadas no resultaban especialmente atractivas y el número de recursos visuales necesarios era reducido. Esta decisión permite mantener el diseño más controlado y coherente con el estilo visual deseado.
+Aunque se sugería obtener las imágenes desde una API externa, decidí utilizar `Image.asset` en lugar de `Image.network`, ya que las imágenes proporcionadas no resultaban especialmente atractivas y el número de recursos visuales necesarios era reducido.
 
-Actualmente los datos son simulados, pero la estructura está preparada para una futura integración con bases de datos en la nube.
+Actualmente los datos son simulados, pero la estructura está preparada para una posible integración con bases de datos en la nube.
 
 ---
 
